@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        /* Basic Options */
+        "incremental": true,
+        "module": "ESNext",
+        "target": "ESNext",
+        "outDir": "./dist",
+        /* Strict Type-Checking Options */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+        /* Additional Checks */
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": false, // modified
+        "noFallthroughCasesInSwitch": true,
+        /* Module Resolution Options */
+        "esModuleInterop": true,
+        "declaration": true,
+        "skipLibCheck": true,
+        "noUncheckedIndexedAccess": false, // modified
+        "sourceMap": true,
+        /* Experimental Options */
+        "experimentalDecorators": false, // modified
+        /* Advanced Options */
+        "forceConsistentCasingInFileNames": true,
+        "paths": {
+            "~/*": [
+                "./src/*"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

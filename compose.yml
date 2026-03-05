@@ -1,0 +1,36 @@
+services:
+    bot:
+        container_name: music-bot
+        image: music-bot
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: unless-stopped
+        env_file: .env
+        logging:
+            driver: "json-file"
+            options:
+                max-size: "10m"
+                max-file: "3"
+        depends_on:
+            - linkdave
+    linkdave:
+        image: ghcr.io/shi-gg/linkdave:0.1.2
+        container_name: music-linkdave
+        restart: unless-stopped
+        ports:
+            - "18080:8080"
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+            interval: 30s
+            timeout: 3s
+            start_period: 5s
+            retries: 3
+        logging:
+            driver: json-file
+            options:
+                max-size: "10m"
+                max-file: "3"
+        environment:
+            LINKDAVE_SOURCE_HTTPS_ENABLED: true
+            LINKDAVE_SOURCE_IP_ADDRESS_PUBLIC_ENABLED: true
