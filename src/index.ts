@@ -1,5 +1,6 @@
 import { Client, Events, GatewayIntentBits, Options } from "discord.js";
 import { EventName, LinkDaveClient } from "linkdave";
+import { inspect } from "node:util";
 import z from "zod";
 
 const SNOWFLAKE_REGEX = /\d{15,21}/;
@@ -112,5 +113,5 @@ void discord.login(process.env.DISCORD_TOKEN);
 function log(text: string, payload: unknown) {
     const date = new Date().toLocaleString("en-US", { timeZone: "Europe/Vienna" }).split(", ")[1];
 
-    console.log(`${date} ${text}:\n${payload}\n`);
+    console.log(`${date} ${text}:\n${inspect(payload, { depth: 2 })}\n`);
 }
